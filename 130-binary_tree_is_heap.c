@@ -8,15 +8,15 @@
 
 int size(const binary_tree_t *tree)
 {
-	int l = 0, r = 0;
+	int left = 0, right = 0;
 
 	if (tree == NULL)
 		return (0);
 
-	l = size(tree->l);
-	r = size(tree->r);
+	left = size(tree->left);
+	right = size(tree->right);
 
-	return (1 + l + r);
+	return (1 + left + right);
 }
 
 /**
@@ -31,7 +31,7 @@ int size(const binary_tree_t *tree)
 
 int is_heap(const binary_tree_t *tree, int ind, int num_nodes, int max)
 {
-	int l = 0, r = 0;
+	int left = 0, right = 0;
 
 	if (tree == NULL)
 		return (1);
@@ -42,10 +42,10 @@ int is_heap(const binary_tree_t *tree, int ind, int num_nodes, int max)
 	if (tree->n > max)
 		return (0);
 
-	l = is_heap(tree->l, (2 * ind + 1), num_nodes, tree->n);
-	r = is_heap(tree->r, (2 * ind + 2), num_nodes, tree->n);
+	left = is_heap(tree->left, (2 * ind + 1), num_nodes, tree->n);
+	right = is_heap(tree->right, (2 * ind + 2), num_nodes, tree->n);
 
-	return ((l == 1 && r == 1) ? 1 : 0);
+	return ((left == 1 && right == 1) ? 1 : 0);
 }
 
 /**
